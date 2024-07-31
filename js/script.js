@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let designGrade;
 
+    console.log(window.top.location.href)
+
     if(tIFrame) {
         designGrade = tIFrame.contentDocument ? tIFrame.contentDocument.querySelector('[data-js="designGrade"]') : tIFrame.contentWindow.document.querySelector('[data-js="designGrade"]')
     } else {
