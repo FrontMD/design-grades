@@ -1,23 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const designGrade = document.querySelector('[data-js="designGrade"]')
     const iframeId = "designGradeIframe" // у iframe должен быть такой id 
+    const tIFrame = document.getElementById(iframeId)
 
-    
-    let currentLocationHref = document.getElementById(iframeId) ? document.getElementById(iframeId).contentWindow.location.href : window.location.href
-    let currentLocationSearch = document.getElementById(iframeId) ? document.getElementById(iframeId).contentWindow.location.search : window.location.search
+    let designGrade;
+
+    if(tIFrame) {
+        designGrade = tIFrame.contentDocument ? tIFrame.contentDocument.querySelector('[data-js="designGrade"]') : tIFrame.contentWindow.document.querySelector('[data-js="designGrade"]')
+    } else {
+        designGrade = document.querySelector('[data-js="designGrade"]')
+    }
+
+    console.log(designGrade)
+
+    if(!designGrade) return
+
+    let currentLocationSearch = window.location.search
 
     let currentId = currentLocationSearch.substring(1).split('&').find(item => item.startsWith('id='))
-
-    console.log("текущая страница")
-    console.log(currentLocationHref)
 
     if(currentId) {
         currentId = currentId.split('=')[1]
     } else {
-        console.log('id не найден')
+        currentId = "1"
     }
 
-    if(!designGrade || !currentId) return
 
     const designGradeBtnList = designGrade.querySelectorAll('[data-js="designGradeBtn"]')
 
@@ -44,9 +50,14 @@ function getResult(id, num, parentBlock) {
           num: num
         })
       })    
-      .then( (response) => { 
-        console.log('ответ')
-        console.log(response)
-    });
+      .then( (response) => {
+        return response.json();
+      })
+      .then((data) => {
+        data = JSON.parse(data);
+        designResults.querySelector('[data-js="designGradeValue"]').innerHTML = data.percent + "%"
+        designGrades.classList.remove("active")
+        designResults.classList.add("active")
+      });
 
 }

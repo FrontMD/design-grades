@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "OSTIN Sans";
+  src: url("../fonts/OSTINSans-Bold-Italic.woff2") format("woff2"), url("../fonts/OSTINSans-Bold-Italic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OSTIN Sans";
+  src: url("../fonts/OSTINSans-Bold.woff2") format("woff2"), url("../fonts/OSTINSans-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 body {
   margin: 0;
   padding: 0;
@@ -21,6 +35,7 @@ body * {
 }
 
 .design-grade {
+  font-family: "OSTIN Sans";
   display: flex;
   align-items: center;
   justify-content: center;
