@@ -2,12 +2,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const designGrade = document.querySelector('[data-js="designGrade"]')
     const iframeId = "designGradeIframe" // у iframe должен быть такой id 
 
+    
+    let currentLocationHref = document.getElementById(iframeId) ? document.getElementById(iframeId).contentWindow.location.href : window.location.href
     let currentLocationSearch = document.getElementById(iframeId) ? document.getElementById(iframeId).contentWindow.location.search : window.location.search
 
     let currentId = currentLocationSearch.substring(1).split('&').find(item => item.startsWith('id='))
 
     console.log("текущая страница")
-    console.log(window.location.href)
+    console.log()
 
     if(currentId) {
         currentId = currentId.split('=')[1]
