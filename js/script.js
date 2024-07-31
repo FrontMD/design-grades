@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(currentId) {
         currentId = currentId.split('=')[1]
-        console.log(currentId)
     } else {
         currentId = "1"
     }
