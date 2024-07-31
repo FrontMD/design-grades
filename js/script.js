@@ -1,29 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const iframeId = "designGradeIframe" // у iframe должен быть такой id 
-    const tIFrame = document.getElementById(iframeId)
 
-    let designGrade;
+    designGrade = document.querySelector('[data-js="designGrade"]')
 
-    console.log(window.top.location.href)
-
-    if(tIFrame) {
-        designGrade = tIFrame.contentDocument ? tIFrame.contentDocument.querySelector('[data-js="designGrade"]') : tIFrame.contentWindow.document.querySelector('[data-js="designGrade"]')
-    } else {
-        designGrade = document.querySelector('[data-js="designGrade"]')
-    }
+    console.log("скрипт из фрейма")
 
     if(!designGrade) return
 
-    let currentLocationSearch = window.location.search
+    let currentLocationSearch = window.top.location.search
 
     let currentId = currentLocationSearch.substring(1).split('&').find(item => item.startsWith('id='))
 
     if(currentId) {
         currentId = currentId.split('=')[1]
+        console.log(currentId)
     } else {
         currentId = "1"
     }
-
 
     const designGradeBtnList = designGrade.querySelectorAll('[data-js="designGradeBtn"]')
 
