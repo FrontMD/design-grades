@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         .split('&')
                         .find(item => item.startsWith('id='))
 
+    console.log("текущая страница")
+    console.log(window.location.href)
+
     if(currentId) {
         currentId = currentId.split('=')[1]
     } else {
