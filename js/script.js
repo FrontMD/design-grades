@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     designGrade = document.querySelector('[data-js="designGrade"]')
 
-    console.log("скрипт из фрейма")
-
     if(!designGrade) return
 
     let currentLocationSearch = window.top.location.search
