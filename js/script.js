@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentId = currentLocationSearch.substring(1).split('&').find(item => item.startsWith('id='))
 
     console.log("текущая страница")
-    console.log()
+    console.log(currentLocationHref)
 
     if(currentId) {
         currentId = currentId.split('=')[1]
